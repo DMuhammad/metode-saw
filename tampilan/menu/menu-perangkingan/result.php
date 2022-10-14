@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include "../../../koneksi/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -70,11 +74,18 @@
                                             </tr>                  
                                         </thead>
                                         <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>guru 1</td>
-                                                    <td>1</td>
-                                                </tr>
+                                            <?php
+                                                $sql = "SELECT id_alternatif, nama_alternatif, rangking FROM vrangking ORDER BY `id_alternatif` ASC LIMIT 1000";
+                                                $a = $koneksi->query($sql);
+                                                while($data = $a->fetch_array()){?>
+                                                    <tr>
+                                                        <td><?= $data['id_alternatif'] ?></td>
+                                                        <td><?= $data['nama_alternatif'] ?></td>
+                                                        <td><?= $data['rangking'] ?></td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
