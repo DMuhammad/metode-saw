@@ -51,8 +51,25 @@
             </div>
         </nav>
         <!--akhir navbar-->
+        <div class="card col-sm-4 mx-auto mt-5" style="margin-bottom: 110px;">
+            <div class="card-header">
+                Form Skala
+            </div>
+            <div class="card-body">
+                <form action="../../insert/insertskala.php" method="POST" autocomplete="off">
+                    <div class="form-group">
+                        <input type="text" name="nama_skala" class="form-control" placeholder="Nama Skala" autofocus><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="value" class="form-control" placeholder="Value" autofocus><br>
+                    </div>
+                    <br>
+                    <button type="submit" name="submit" class="btn btn-dark btn-block">Tambah</button>
+                </form>
+            </div>
+        </div>
         <!--footer-->
-        <footer class="mt-2 bg-dark p-3 text-center" style="color: white; font-weight: bold;">
+        <footer class="mt-2 bg-dark p-3 text-center fixed-bottom" style="color: white; font-weight: bold;">
             <p>Metode SAW &copy; 2022</p>
         </footer>
         <!--akhir footer-->
