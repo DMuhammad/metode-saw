@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include "../../koneksi/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,8 +55,37 @@
             </div>
         </nav>
         <!--akhir navbar-->
+        <div class="card col-sm-4 mx-auto mt-5" style="margin-bottom: 110px;">
+            <div class="card-header">
+                Form Bobot
+            </div>
+            <div class="card-body">
+                <form action="../../insert/insertbobot.php" method="POST" autocomplete="off">
+                    <div class="form-group">
+                        <label for="kriteria">ID Kriteria</label>
+                        <select name="kriteria" class="form-control">
+                            <option value="">-- id kriteria ---</option>
+                            <?php 
+                            $sql="SELECT id_kriteria, nama_kriteria FROM kriteria";
+                            $a = $koneksi->query($sql);
+                            while ($data=$a->fetch_array()) { ?>
+                                <option value="<?=$data['id_kriteria']?>"><?= $data['id_kriteria'] ?>:<?= $data['nama_kriteria'] ?></option> 
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" name="value" class="form-control" placeholder="value" autofocus><br>
+                    </div>
+                    <br>
+                    <button type="submit" name="submit" class="btn btn-dark btn-block">Tambah</button>
+                </form>
+            </div>
+        </div>
         <!--footer-->
-        <footer class="mt-2 bg-dark p-3 text-center" style="color: white; font-weight: bold;">
+        <footer class="mt-2 bg-dark p-3 text-center fixed-bottom" style="color: white; font-weight: bold;">
             <p>Metode SAW &copy; 2022</p>
         </footer>
         <!--akhir footer-->
