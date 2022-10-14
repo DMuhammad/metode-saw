@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include "../../koneksi/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,8 +55,63 @@
             </div>
         </nav>
         <!--akhir navbar-->
+        <div class="card col-sm-4 mx-auto mt-5" style="margin-bottom: 110px;">
+            <div class="card-header">
+                Form Matrix
+            </div>
+            <div class="card-body">
+                <form action="../../insert/insertmatrix.php" method="POST" autocomplete="off">
+                    <div class="form-group">
+                        <label for="alternatif">ID Alternatif</label>
+                        <select name="alternatif" class="form-control">
+                            <option value="">-- id alternatif ---</option>
+                            <?php 
+                            $sql="SELECT id_alternatif, nama_alternatif FROM alternatif";
+                            $a = $koneksi->query($sql);
+                            while ($data=$a->fetch_array()) { ?>
+                                <option value="<?=$data['id_alternatif']?>"><?= $data['id_alternatif'] ?>:<?= $data['nama_alternatif'] ?></option> 
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="bobot">ID Bobot</label>
+                        <select name="bobot" class="form-control">
+                            <option value="">-- id bobot ---</option>
+                            <?php 
+                            $sql="SELECT id_bobot, value FROM bobot";
+                            $a = $koneksi->query($sql);
+                            while ($data=$a->fetch_array()) { ?>
+                                <option value="<?=$data['id_bobot']?>"><?= $data['id_bobot'] ?>:<?= $data['value'] ?></option> 
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="skala">ID Skala</label>
+                        <select name="skala" class="form-control">
+                            <option value="">-- id skala ---</option>
+                            <?php 
+                            $sql="SELECT id_skala, nama_skala FROM skala";
+                            $a = $koneksi->query($sql);
+                            while ($data=$a->fetch_array()) { ?>
+                                <option value="<?=$data['id_skala']?>"><?= $data['id_skala'] ?>:<?= $data['nama_skala'] ?></option> 
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <br>
+                    <button type="submit" name="submit" class="btn btn-dark btn-block">Tambah</button>
+                </form>
+            </div>
+        </div>
         <!--footer-->
-        <footer class="mt-2 bg-dark p-3 text-center" style="color: white; font-weight: bold;">
+        <footer class="mt-2 bg-dark p-3 text-center fixed-bottom" style="color: white; font-weight: bold;">
             <p>Metode SAW &copy; 2022</p>
         </footer>
         <!--akhir footer-->
