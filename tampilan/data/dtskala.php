@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include "../../koneksi/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,6 +55,49 @@
             </div>
         </nav>
         <!--akhir navbar-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mt-2" style="min-height: 515px;">
+                    <div class="card">
+                        <div class="card-header">
+                            Data Skala
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                            </div>
+                            <div class="row">
+                                <div class="col mt-3">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID Skala</th>
+                                                <th>Nama Skala</th>
+                                                <th>Value</th>
+                                            </tr>                  
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                $sql = "SELECT id_skala, nama_skala, value FROM skala";
+                                                $a = $koneksi->query($sql);
+                                                while($data = $a->fetch_array()){
+                                                    $id = 1; ?>
+                                                    <tr>
+                                                        <td><?= $data['id_skala'] ?></td>
+                                                        <td><?= $data['nama_skala'] ?></td>
+                                                        <td><?= $data['value'] ?></td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--footer-->
         <footer class="mt-2 bg-dark p-3 text-center" style="color: white; font-weight: bold;">
             <p>Metode SAW &copy; 2022</p>
