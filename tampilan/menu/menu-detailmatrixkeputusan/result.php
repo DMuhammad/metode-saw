@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include "../../../koneksi/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -76,17 +80,25 @@
                                             </tr>                  
                                         </thead>
                                         <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>1</td>
-                                                    <td>guru 1</td>
-                                                    <td>1</td>
-                                                    <td>Kemampuan merencanakan pengajaran</td>
-                                                    <td>1</td>
-                                                    <td>0.401</td>
-                                                    <td>3</td>
-                                                    <td>Sedang</td>
-                                                </tr>
+                                            <?php
+                                                $sql = "SELECT id_nilai, id_alternatif, nama_alternatif, id_kriteria, nama_kriteria, 
+                                                        id_bobot, value, nilai, nama_skala FROM vmatrixkeputusan ORDER BY `id_nilai` ASC LIMIT 1000";
+                                                $a = $koneksi->query($sql);
+                                                while($data = $a->fetch_array()){?>
+                                                    <tr>
+                                                        <td><?= $data['id_nilai'] ?></td>
+                                                        <td><?= $data['id_alternatif'] ?></td>
+                                                        <td><?= $data['nama_alternatif'] ?></td>
+                                                        <td><?= $data['id_kriteria'] ?></td>
+                                                        <td><?= $data['nama_kriteria'] ?></td>
+                                                        <td><?= $data['id_bobot'] ?></td>
+                                                        <td><?= $data['value'] ?></td>
+                                                        <td><?= $data['nilai'] ?></td>
+                                                        <td><?= $data['nama_skala'] ?></td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
