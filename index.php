@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if(isset($_GET['metode'])){
+        $_SESSION['metode'] = $_GET['metode'];
+    }else{
+        $_SESSION['metode'] = "saw";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,7 +23,20 @@
     <!--navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="index.php">Metode SAW</a>
+                <?php
+                    if(isset($_SESSION['metode'])){
+                      if($_SESSION['metode'] == "wp"){ ?>
+                        <a class="navbar-brand" href="index.php">Metode WP</a>
+                      <?php
+                      } else if($_SESSION['metode'] == "saw"){ ?>
+                        <a class="navbar-brand" href="index.php">Metode SAW</a>
+                      <?php
+                      } else{ ?>
+                        <a class="navbar-brand" href="index.php">Metode SAW</a>
+                      <?php
+                      }
+                    }
+                ?>
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a class="btn btn-dark" aria-current="page" href="index.php">Home</a>
@@ -39,12 +61,47 @@
                             <li><a class="dropdown-item" href="tampilan/form/formmatrix.php">Formulir Matrix Keputusan</a></li>
                         </ul>
                     </li>
+                    <?php
+                        if(isset($_SESSION['metode'])){
+                            if($_SESSION['metode'] == "wp"){ ?>
+                                <li class="nav-item dropdown">
+                                    <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="tampilan/menu/menu-nilaiS/result.php">Nilai S</a></li>
+                                        <li><a class="dropdown-item" href="tampilan/menu/menu-nilaiV/result.php">Nilai V</a></li>
+                                        <li><a class="dropdown-item" href="tampilan/menu/menu-normalisasiterbobot/result.php">Normalisasi Terbobot</a></li>
+                                        <li><a class="dropdown-item" href="tampilan/menu/menu-pangkat/result.php">Pangkat</a></li>
+                                    </ul>
+                                </li>
+                            <?php
+                            } else if($_SESSION['metode'] == "saw"){ ?>
+                                <li class="nav-item dropdown">
+                                    <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="tampilan/menu/menu-detailmatrixkeputusan/result.php">Detail Matrix Keputusan</a></li>
+                                        <li><a class="dropdown-item" href="tampilan/menu/menu-normalisasi/result.php">Normalisasi</a></li>
+                                        <li><a class="dropdown-item" href="tampilan/menu/menu-perangkingan/result.php">Perankingan</a></li>
+                                    </ul>
+                                </li>
+                                <?php
+                            } else{ ?>
+                                <li class="nav-item dropdown">
+                                    <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="tampilan/menu/menu-detailmatrixkeputusan/result.php">Detail Matrix Keputusan</a></li>
+                                        <li><a class="dropdown-item" href="tampilan/menu/menu-normalisasi/result.php">Normalisasi</a></li>
+                                        <li><a class="dropdown-item" href="tampilan/menu/menu-perangkingan/result.php">Perankingan</a></li>
+                                    </ul>
+                                </li>
+                            <?php
+                            }
+                        }
+                    ?>
                     <li class="nav-item dropdown">
-                        <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
+                        <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Metode</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="tampilan/menu/menu-detailmatrixkeputusan/result.php">Detail Matrix Keputusan</a></li>
-                            <li><a class="dropdown-item" href="tampilan/menu/menu-normalisasi/result.php">Normalisasi</a></li>
-                            <li><a class="dropdown-item" href="tampilan/menu/menu-perangkingan/result.php">Perankingan</a></li>
+                            <li><a class="dropdown-item" href="index.php?metode=saw">SAW</a></li>
+                            <li><a class="dropdown-item" href="index.php?metode=wp">WP</a></li>
                         </ul>
                     </li>
                 </ul>
