@@ -26,20 +26,20 @@
                 <?php
                     if(isset($_SESSION['metode'])){
                       if($_SESSION['metode'] == "wp"){ ?>
-                        <a class="navbar-brand" href="index.php">Metode WP</a>
+                        <a class="navbar-brand" href="index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode WP</a>
                       <?php
                       } else if($_SESSION['metode'] == "saw"){ ?>
-                        <a class="navbar-brand" href="index.php">Metode SAW</a>
+                        <a class="navbar-brand" href="index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode SAW</a>
                       <?php
                       } else{ ?>
-                        <a class="navbar-brand" href="index.php">Metode SAW</a>
+                        <a class="navbar-brand" href="index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode SAW</a>
                       <?php
                       }
                     }
                 ?>
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="btn btn-dark" aria-current="page" href="index.php">Home</a>
+                        <a class="btn btn-dark" aria-current="page" href="index.php?metode=<?php echo $_SESSION['metode'] ?>">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Data</a>
@@ -113,7 +113,7 @@
                 <div class="col-lg-12 mt-2">
                     <div class="jumbotron jumbotron-fluid">
                         <div class="container">
-                            <h1 class="display-6"><b>Selamat Datang di Metode SAW</b></h1><br>
+                            <h1 class="display-6"><b>Selamat Datang di Sistem Rekomendasi Perguruan Tinggi</b></h1><br>
                         </div>
                     </div>
                 </div>
