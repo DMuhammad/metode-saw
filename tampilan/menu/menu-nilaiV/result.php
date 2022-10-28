@@ -71,7 +71,7 @@
                                             <tr>
                                                 <th>ID Alternatif</th>
                                                 <th>Nama Alternatif</th>
-                                                <th>Nilai S</th>
+                                                <th>Nilai V</th>
                                             </tr>                  
                                         </thead>
                                         <tbody>
