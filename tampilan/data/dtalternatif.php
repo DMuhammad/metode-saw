@@ -18,20 +18,8 @@
     <!--navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <?php
-                    if(isset($_SESSION['metode'])){
-                      if($_SESSION['metode'] == "wp"){ ?>
-                        <a class="navbar-brand" href="../../index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode WP</a>
-                      <?php
-                      } else if($_SESSION['metode'] == "saw"){ ?>
-                        <a class="navbar-brand" href="../../index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode SAW</a>
-                      <?php
-                      } else if($_SESSION['metode'] == "topsis"){ ?>
-                        <a class="navbar-brand" href="../../index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode TOPSIS</a>
-                      <?php
-                      }
-                    }
-                ?>
+                <a class="navbar-brand" href="../../index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode <?php echo strtoupper($_SESSION['metode']) ?></a>
+                
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a class="btn btn-dark" aria-current="page" href="../../index.php?metode=<?php echo $_SESSION['metode'] ?>">Home</a>
