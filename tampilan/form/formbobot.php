@@ -18,20 +18,8 @@
     <!--navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <?php
-                    if(isset($_SESSION['metode'])){
-                      if($_SESSION['metode'] == "wp"){ ?>
-                        <a class="navbar-brand" href="../../index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode WP</a>
-                      <?php
-                      } else if($_SESSION['metode'] == "saw"){ ?>
-                        <a class="navbar-brand" href="../../index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode SAW</a>
-                      <?php
-                      } else{ ?>
-                        <a class="navbar-brand" href="../../index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode SAW</a>
-                      <?php
-                      }
-                    }
-                ?>
+                <a class="navbar-brand" href="../../index.php?metode=<?php echo $_SESSION['metode'] ?>">Metode <?php echo strtoupper($_SESSION['metode']) ?></a>
+                
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a class="btn btn-dark" aria-current="page" href="../../index.php"?metode=<?php echo $_SESSION['metode'] ?>>Home</a>
@@ -79,13 +67,14 @@
                                     </ul>
                                 </li>
                                 <?php
-                            } else{ ?>
+                            } else if($_SESSION['metode'] == "topsis") { ?>
                                 <li class="nav-item dropdown">
                                     <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="../menu/menu-detailmatrixkeputusan/result.php">Detail Matrix Keputusan</a></li>
-                                        <li><a class="dropdown-item" href="../menu/menu-normalisasi/result.php">Normalisasi</a></li>
-                                        <li><a class="dropdown-item" href="../menu/menu-perangkingan/result.php">Perankingan</a></li>
+                                        <li><a class="dropdown-item" href="../menu/menu-topsis-maxmin/result.php">Detail Nilai Maksimum dan Minimum</a></li>
+                                        <li><a class="dropdown-item" href="../menu/menu-topsis-nilaiV/result.php">Detail Nilai Preferensi Alternatif</a></li>
+                                        <li><a class="dropdown-item" href="../menu/menu-topsis-normalisasi/result.php">Detail Normalisasi</a></li>
+                                        <li><a class="dropdown-item" href="../menu/menu-topsis-terbobot/result.php">Detail Normalisasi Terbobot</a></li>
                                     </ul>
                                 </li>
                             <?php
